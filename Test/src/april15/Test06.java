@@ -153,7 +153,6 @@ public class Test06 {
 		
 		//loopQuiz02();
 		loopQuiz09();
-
 	}
 
 }
