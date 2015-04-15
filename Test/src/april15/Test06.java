@@ -86,37 +86,45 @@ public class Test06 {
 
 		int si = 24;
 		int daysum = 0;
+		int hoursum = 0;
+		int minsum = 0;
 		
 		for(int month=1;month<=nyeon;month++){
 			
 			if(month<=7){
 				if(month%2==1&&month!=2){
 					for(int day=1;day<=31;day++){
-//						for(int hour=1;hour<=si;hour++)
-//						{
-//							for(int min=0;min<60;min++){
-//							}
-//						}
+						for(int hour=1;hour<=si;hour++)
+						{
+							for(int min=0;min<60;min++){
+								minsum++;
+							}
+							hoursum++;
+						}
 						daysum++;
 					}
 				}
 				else if(month%2==0&&month!=2){
 					for(int day=1;day<=30;day++){
-//						for(int hour=1;hour<=si;hour++)
-//						{
-//							for(int min=0;min<60;min++){
-//							}
-//						}
+						for(int hour=1;hour<=si;hour++)
+						{
+							for(int min=0;min<60;min++){
+								minsum++;
+							}
+							hoursum++;
+						}
 						daysum++;
 					}
 				}
 				else{
 					for(int day=1;day<=28;day++){
-//						for(int hour=1;hour<=si;hour++)
-//						{
-//							for(int min=0;min<60;min++){
-//							}
-//						}
+						for(int hour=1;hour<=si;hour++)
+						{
+							for(int min=0;min<60;min++){
+								minsum++;
+							}
+							hoursum++;
+						}
 						daysum++;
 					}
 				}
@@ -124,21 +132,25 @@ public class Test06 {
 			else if(month>7){
 				if(month%2==0){
 					for(int day=1;day<=31;day++){
-//						for(int hour=1;hour<=si;hour++)
-//						{
-//							for(int min=0;min<60;min++){
-//							}
-//						}
+						for(int hour=1;hour<=si;hour++)
+						{
+							for(int min=0;min<60;min++){
+								minsum++;
+							}
+							hoursum++;
+						}
 						daysum++;
 					}
 				}
 				else if(month%2==1){
 					for(int day=1;day<=30;day++){
-//						for(int hour=1;hour<=si;hour++)
-//						{
-//							for(int min=0;min<60;min++){
-//							}
-//						}
+						for(int hour=1;hour<=si;hour++)
+						{
+							for(int min=0;min<60;min++){
+								minsum++;
+							}
+							hoursum++;
+						}
 						daysum++;
 					}
 				}
@@ -146,7 +158,7 @@ public class Test06 {
 			
 		}
 		
-		System.out.println("ÃÑ "+daysum+" ÀÏ");
+		System.out.println("ÃÑ "+daysum+"ÀÏ "+hoursum+"½Ã°£ "+minsum+"ºĞ");
 	}
 	
 	public static void main(String[] args) {
