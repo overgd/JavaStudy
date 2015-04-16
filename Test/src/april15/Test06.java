@@ -16,7 +16,6 @@ public class Test06 {
 		}
 		System.out.println("°¹¼ö´Â "+mul+" ÇÕÀº "+res);
 	}
-	
 	static void loopQuiz04(){
 		int sum = 0;
 		
@@ -27,7 +26,6 @@ public class Test06 {
 			}
 		}
 	}
-	
 	static void loopQuiz05(){
 		
 		for(int i=1;i<10;i++){
@@ -41,7 +39,6 @@ public class Test06 {
 			
 		}
 	}
-	
 	static void loopQuiz06(){
 		
 		for(int i=10;i<20;i++){
@@ -53,7 +50,6 @@ public class Test06 {
 						
 		}
 	}
-	
 	static void loopQuiz07(){
 		int si = 24;
 		int sum = 0;
@@ -66,7 +62,6 @@ public class Test06 {
 		}
 		System.out.println("ÃÑ "+sum+" ºÐ");
 	}
-	
 	static void loopQuiz08(){
 		int dal = 30;
 		int si = 24;
@@ -80,7 +75,6 @@ public class Test06 {
 		}
 		System.out.println("ÃÑ "+sum+" ½Ã°£");
 	}
-	
 	static void loopQuiz09(){
 		int nyeon = 12;
 
@@ -163,7 +157,12 @@ public class Test06 {
 	
 	public static void main(String[] args) {
 		
-		//loopQuiz02();
+		loopQuiz02();
+		loopQuiz04();
+		loopQuiz05();
+		loopQuiz06();
+		loopQuiz07();
+		loopQuiz08();
 		loopQuiz09();
 	}
 
