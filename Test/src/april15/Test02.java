@@ -4,17 +4,13 @@ public class Test02 {
 
 	public static void main(String[] args) {
 		
-		Quiz01();
-		Quiz02();
-		Quiz03();
+		Quiz01(241, 60);
+		Quiz02(8);
+		Quiz03(10000);
 
 	}
 	
-	static void Quiz01(){
-		
-		float height, weight;
-		height = 241; //키
-		weight = 60; //몸무게
+	static void Quiz01(float height, float weight){
 		
 		double bmi = (height-100)*0.9f; //표준체중
 		
@@ -26,14 +22,13 @@ public class Test02 {
 		else{
 			System.out.println("과체중이 아닙니다.");
 		}
-		
 	}
 	
-	static void Quiz02(){
+	static void Quiz02(int month){
 		
-		//int month = 1; //월
+//		int month = 1; //월
 		
-		for(int month=1;month<=12;month++){
+//		for(int month=1;month<=12;month++){
 			
 //			if(month<=7){
 //				if(month%2==1&&month!=2){
@@ -54,7 +49,7 @@ public class Test02 {
 //					System.out.println(month+"월은 30일입니다.");
 //				}
 //			}
-			
+///////////////////////////////////////////////////////////////////////////////			
 //			if(month==4||month==6||month==9||month==11){
 //				System.out.println(month+"월은 30일입니다.");
 //			}
@@ -77,14 +72,12 @@ public class Test02 {
 				break;
 			}
 			
-		}
+//		}
 	
-		
 	}
 
-	static void Quiz03(){
+	static void Quiz03(int income){
 		
-		int income = 1000; //소득
 		double tax = 0d; //세금
 		
 		System.out.println("소득은 "+income+"만원이고,");
