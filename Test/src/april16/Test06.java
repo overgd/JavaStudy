@@ -16,10 +16,13 @@ package april16;
 //객체 : 사람
 //속성 : 국적, 이름, 나이, 성별
 //동작 : X
+//국적은 모두가 같기 때문에 static을 붙여준다.
 
 class Human{
 	
-	String nation = new String("대한민국");
+	static String nation = new String("대한민국");
+	/*static을 붙여주면 메모리에 공통적인 nation이 하나만 만들어진다.*/
+	
 	String name = new String("홍길동");
 	String gender = new String("남자");
 	int age = 34;
@@ -27,11 +30,12 @@ class Human{
 }
 
 class Lion{
+	
 	Lion(){}//생성자
 	int numberOfLegs = 4; //다리
 	double weight = 105.1; //몸무게
 	int age = 3; //나이
-	
+		
 	void sleep(){
 		System.out.println("잠잔다");
 	}
@@ -51,8 +55,8 @@ public class Test06 {
 		Human h1 = new Human(); //첫번째 인간
 		
 		Human h2 = new Human(); //두번째 인간
-		h2.name = new String("마길동");
-		h2.gender = new String("여자");
+		h2.name = new String("마길동"); //문자열 생성 첫번째 방법
+		h2.gender = "여자"; //두번째 방법
 		h2.age = 56;
 		
 		Human h3 = new Human(); // 세번째 인간
