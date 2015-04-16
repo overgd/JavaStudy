@@ -103,7 +103,7 @@ public class Test03 {
 		}
 		
 	}
-	static void methodQuiz09(int income){
+	static void methodQuiz07_1(int income){
 		
 		int won_std[] = {50000, 10000, 5000, 1000, 500, 100};
 		int won[] = new int[won_std.length];
@@ -127,7 +127,7 @@ public class Test03 {
 		methodQuiz06(0.1);
 		methodQuiz07(800000000);
 		//methodQuiz08("a");
-		methodQuiz09(61200);
+		methodQuiz07_1(61200);
 	}
 
 }
