@@ -8,12 +8,12 @@ public class Test03 {
 		int cnt2=0;
 		
 		for(int cnt1 = num1;cnt1<=num2;cnt1++){
-			System.out.println(cnt1);
 			if(cnt1%num3==0){
 				cnt2++;
-				System.out.println(num3+"의 배수의 갯수 "+cnt2);
+				
 			}
 		}
+		System.out.println(num3+"의 배수의 갯수 "+cnt2);
 	}
 	static void methodQuiz02(int num1, int num2, int num3){
 		int cnt2=0;
@@ -21,11 +21,11 @@ public class Test03 {
 		for(int cnt1 = num1;cnt1<=num2;cnt1++){
 			//System.out.println(cnt1);
 			if(cnt1%num3==0){
-				cnt2++;
-				System.out.println(num3+"의 배수의 갯수 "+cnt2);
+				cnt2=cnt2+cnt1;
+				
 			}
 		}
-		
+		System.out.println(num3+"의 배수의 누적개수의 합은 "+cnt2);
 	}
 	static void methodQuiz03(int width, int height){
 		
@@ -103,17 +103,31 @@ public class Test03 {
 		}
 		
 	}
+	static void methodQuiz09(int income){
+		
+		int won_std[] = {50000, 10000, 5000, 1000, 500, 100};
+		int won[] = new int[won_std.length];
+		
+		for(int cnt=0;cnt<won.length;cnt++){
+			
+			won[cnt] = income/won_std[cnt];
+			income = income%won_std[cnt];
+			
+			System.out.print(won_std[cnt]+"원권 : "+won[cnt]+" ");
+		}
+	}
 	
 	public static void main(String[] args) {
 		
-		methodQuiz01(1, 100, 3);
+		methodQuiz01(1, 100, 2);
 		methodQuiz02(100, 200, 4);
 		methodQuiz03(20, 30);
 		methodQuiz04(4, 3, 5);
 		methodQuiz05(6);
 		methodQuiz06(0.1);
 		methodQuiz07(800000000);
-		methodQuiz08("a");
+		//methodQuiz08("a");
+		methodQuiz09(61200);
 	}
 
 }
