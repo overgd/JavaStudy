@@ -20,6 +20,7 @@ package april16;
  */
 
 class Car{
+	Car(){}
 	int numberOfDoor;
 	double weight = 2.3;
 	static int numberOfWheel = 4;
@@ -30,6 +31,7 @@ class TV{
 	static int width = 100;
 	static int height = 50;
 	String origin = "중국";
+	TV(){}
 }
 class Smartphone{
 	
@@ -48,7 +50,7 @@ class Camera{
 public class Test07 {
 
 	public static void main(String[] args) {
-		
+				
 		//첫번째 차
 		Car car1 = new Car();
 		car1.numberOfDoor = 3;
