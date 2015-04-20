@@ -9,14 +9,14 @@ class JavaStore{
 	Item item2 = new Item(200);
 	Item item3 = new Item(300);
 	
+
 }
 
 class Item{
 	Item(int a){
-		price = a;
+		this.price = a;
 	}
-	
-	int price;	
+	int price;
 }
 
 
