@@ -1,14 +1,31 @@
 package april20;
 
 class ArrayTest2{
+	Baseball[] bb1 = new Baseball[5];
+	Baseball[][] bb2 = new Baseball[5][5];
+	Baseball[] bb3 = {new Baseball(), new Baseball(), null, null, null};
+	Baseball[][] bb4 = {
+			{new Baseball(), null},
+			{null, new Baseball()}
+	};
+	
 	int[][] some = new int[3][4];
 	
 	void doArray(){
+		bb1[0] = new Baseball();
+		bb1[1] = new Baseball();
+		
+		bb2[0][0] = new Baseball();
+		
 		int[][] values = new int[3][4];
 		values[0][0] = 1;
 		values[0][1] = 2;
 	}
+}
 
+class Baseball{
+	Baseball(){}
+	
 }
 
 public class Test09 {
