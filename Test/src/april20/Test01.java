@@ -29,14 +29,17 @@ class DiceGame{
 }
 	
 class Gababo{
-	Gababo(int a){
-		human = a;
-	}
+	
 	int human;
 	int com = (int)((Math.random()*3)+1);  //1: 가위 2: 바위 3: 보
 	
 	String human_re;
 	String com_re;
+	
+	Gababo(int a){
+		human = a;
+	}
+	
 		
 	void game_rule(){
 		if(human==1) human_re = "가위";
@@ -80,7 +83,6 @@ class Gababo{
 public class Test01{
 	public static void main(String[] args)
 	{
-
 		Gababo gg = new Gababo(2);
 		
 		gg.game_rule();
