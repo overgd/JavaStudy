@@ -16,45 +16,53 @@ class JavaDepartmentStore {
 	
 	JavaDepartmentStore(){
 		
-		coner1 = new Elec();
-		coner2 = new Fashion();
-		coner3 = new Fruit();
+		coner = new Coner[4];
+		
+		coner[0] = new Elec(new Com(100), new Radio(200));
+		coner[1] = new Fashion(new Pants(50), new Suits(90));
+		coner[2] = new Fruit(new Apple(10), new Banana(20));
+		coner[3] = new Elec(new Com(200));
 		
 		cu = new Customer(1000);
 	}
 	
-	Coner coner1;
-	Coner coner2;
-	Coner coner3;
+	Coner[] coner;
 	
 	Customer cu;
 }
 
 class Coner {
-	Coner(){}
-	Items item1;
-	Items item2;
-	Items item3;
+	Items[] item;
+	Coner(Items item1, Items item2){
+
+		item = new Items[2];
+		this.item[0] = item1;
+		this.item[1] = item2;
+	}
+	Coner(Items item1){
+		item = new Items[1];
+		this.item[0] = item1;
+	}
 }
 
 class Elec extends Coner {
-	Elec(){
-		item1 = new Com(100);
-		item2 = new Radio(200);
+	Elec(Items item1, Items item2){
+		super(item1, item2);
+	}
+	Elec(Items item1){
+		super(item1);
 	}
 }
 
 class Fashion extends Coner {
-	Fashion(){
-		item1 = new Pants(50);
-		item2 = new Suits(70);
+	Fashion(Items item1, Items item2){
+		super(item1, item2);
 	}
 }
 
 class Fruit extends Coner {
-	Fruit(){
-		item1 = new Apple(10);
-		item2 = new Banana(20);
+	Fruit(Items item1, Items item2){
+		super(item1, item2);
 	}
 }
 
@@ -101,12 +109,13 @@ public class Test05 {
 
 		JavaDepartmentStore ds = new JavaDepartmentStore();
 		
-		ds.cu.buy(ds.coner1.item1);
-		ds.cu.buy(ds.coner1.item2);
-		ds.cu.buy(ds.coner2.item1);
-		ds.cu.buy(ds.coner2.item2);
-		ds.cu.buy(ds.coner3.item1);
-		ds.cu.buy(ds.coner3.item2);
+		ds.cu.buy(ds.coner[0].item[0]);
+		ds.cu.buy(ds.coner[0].item[1]);
+		ds.cu.buy(ds.coner[1].item[0]);
+		ds.cu.buy(ds.coner[1].item[1]);
+		ds.cu.buy(ds.coner[2].item[0]);
+		ds.cu.buy(ds.coner[2].item[1]);
+		ds.cu.buy(ds.coner[3].item[0]);
 		
 		System.out.println(ds.cu.money);
 	}
