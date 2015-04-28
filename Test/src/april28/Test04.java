@@ -76,23 +76,28 @@ public class Test04 {
 
 	public static void main(String[] args) {
 
-//		MyThread1 th1 = new MyThread1();
-//		Runnable r = new MyThread2();
-//		Thread th2 = new Thread(r);
-//		
-//		th1.start();
-//		th2.start();
-	
+		MyThread1 th1 = new MyThread1();
+		Runnable r = new MyThread2();
+		Thread th2 = new Thread(r);
+		try {
+			th1.start();
+			th1.join();
+			th2.start();
+			th2.join();
+		}
+		catch(Exception e){
+			
+		}
 		
 //		NoThread not = new NoThread();
 //		
 //		not.doIt();
 		
-		
-		YesThread yt = new YesThread();
-		
-		yt.doIt();
-		
+//		
+//		YesThread yt = new YesThread();
+//		
+//		yt.doIt();
+//		
 	}
 
 }
