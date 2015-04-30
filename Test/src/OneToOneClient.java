@@ -15,10 +15,6 @@ public class OneToOneClient {
 		OutputStream os = null;
 		DataOutputStream dos = null;
 		
-		InputStream is = null;
-		DataInputStream dis = null;
-		
-		
 		try {
 			socket = new Socket("127.0.0.1", 7878);
 			System.out.println("1:1 채팅 서버 접속 성공!");
@@ -26,17 +22,13 @@ public class OneToOneClient {
 			
 			os = socket.getOutputStream();
 			dos = new DataOutputStream(os);
-			is = socket.getInputStream();
-			dis = new DataInputStream(is);
 			
 			while(true)
 			{
 				System.out.print("나 - ");
 				String content = scan.nextLine();
 				dos.writeUTF(content); 
-				
-				String str = dis.readUTF();
-				System.out.println("상대방 - "+str);
+
 
 				if(content.equals("quit")) {
 					socket.close();
