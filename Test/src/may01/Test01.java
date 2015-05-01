@@ -108,6 +108,8 @@ class FirstWindow extends Frame {
 		setBackground(Color.GRAY); //¹è°æ»ö
 		setLocation(600,300);
 		setVisible(true);
+	
+		addWindowListener(new WindowCloseListener());
 	}
 }
 

@@ -13,8 +13,10 @@ class Ex_Window extends Frame {
 		
 		super(str);
 		
-		setLayout(new FlowLayout());
-		
+		FlowLayout layout = new FlowLayout();
+
+		setLayout(layout);
+
 		lbl1 = new Label("설치되어 있는 OS선택(복수)");
 		lbl2 = new Label("컴퓨터 CPU종류 선택");
 		
@@ -39,6 +41,8 @@ class Ex_Window extends Frame {
 		setSize(500, 150);
 		setLocation(500, 400);
 		setVisible(true);
+		
+		addWindowListener(new WindowCloseListener());
 		
 	}
 	

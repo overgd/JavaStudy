@@ -27,6 +27,7 @@ class WindowWithGrid extends Frame {
 		setSize(300,300);
 		setVisible(true);
 		
+		addWindowListener(new WindowCloseListener());
 	}
 	
 }
@@ -63,6 +64,8 @@ class WindowWithPanel extends Frame {
 		setSize(400, 300);
 		
 		setVisible(true);
+		
+		addWindowListener(new WindowCloseListener());
 	}
 }
 
