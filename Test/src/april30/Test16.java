@@ -29,7 +29,11 @@ class Oracle_DB {
 		stmt = null;
 		pstmt = null;
 		rs = null;
+	}
+	
+	void query(DB_DML_Choose ddc) throws SQLException{
 		ddc = new DB_DML_Choose();
+		stmt.executeUpdate(ddc.select());
 	}
 	
 	void login(){
@@ -40,9 +44,7 @@ class Oracle_DB {
 			con = DriverManager.getConnection(url, "hr", "hr");
 			System.out.println("hr에 로그인 완료!");
 			stmt = con.createStatement();
-			ddc.select();
-//			stmt.executeUpdate();
-			
+			query(ddc);
 			System.out.println("작업완료!");
 		}
 		catch(Exception e) {
@@ -70,26 +72,28 @@ class DB_DML_Choose {
 	DB_DML_Choose(){
 		dd = new DB_DML();		
 	}
-	void select() throws SQLException{
+	String select() {
 		
-		System.out.println("작업할 DML을 선택하세요. 1번 insert, 2번 update, 3번 delete, 4번 select");
+		System.out.println("작업할 DML을 선택하세요. 1번 insert, 2번 update, 3번 delete");
+		System.out.println("1번 insert, 2번 update, 3번 delete");
+		System.out.println("아무것도 하지 않으려면 엔터를 누르세요.");
 		scan = new Scanner(System.in);
 		sel_num = scan.nextInt();
 		switch(sel_num){
 		case 1 :		
-			dd.insert(orcl);
+			return_query = dd.insert();
 			break;
 		case 2 :
-			dd.update(orcl);
+			return_query = dd.update();
 			break;
 		case 3 :
-			dd.delete(orcl);
+			return_query = dd.delete();
 			break;
-		case 4 : 
-			dd.select(orcl);
+		default : 
+			
 			break;
 		}	
-		//return return_query;
+		return return_query;
 	}
 }
 
@@ -98,44 +102,55 @@ class DB_DML {
 	String insert;
 	String update;
 	String delete;
-	String select;
 	
 	String id = "";
 	String name = "";
 	
 	Scanner scan;
 	
-	DB_DML(){
-		if(!id.equals("")){ //조건이 없다에 비교할 수 있다.
-			select = select + "and id="+id;
-		}
-		if(!name.equals("")){
-			select = select + "and name = '"+name+"'";
-		}
-	}
+	DB_DML(){}
 	
-	void insert(Oracle_DB orcl) throws SQLException{
-		System.out.println(orcl.test);
-		System.out.println("insert작업을 시작합니다.");
-		insert = "insert into mytest values(124, '신길동')";
-		scan = new Scanner(System.in);
+	String insert() {
 		
-		//return insert;
+		System.out.println("insert작업을 시작합니다.");
+		
+		System.out.println("ID를 입렵하세요.");
+		scan = new Scanner(System.in);
+		id = scan.nextLine();
+		System.out.println("이름을 입력하세요.");
+		scan = new Scanner(System.in);
+		name = scan.nextLine();
+		
+		insert = "insert into mytest values("+id+", '"+name+"')";
+		
+		return insert;
 	}
 	
-	void update(Oracle_DB orcl){
+	String update(){
 		System.out.println("update작업을 시작합니다.");
-//		return update;
+		
+		System.out.println("변경할 ID를 입렵하세요.");
+		scan = new Scanner(System.in);
+		id = scan.nextLine();
+		System.out.println("이름을 입력하세요.");
+		scan = new Scanner(System.in);
+		name = scan.nextLine();
+		
+		update = "update ";
+		
+		return update;
 	}
 	
-	void delete(Oracle_DB orcl){
+	String delete(){
 		System.out.println("delete작업을 시작합니다.");
-//		return delete;
+		return delete;
 	}
-	void select(Oracle_DB orcl){
-		System.out.println("select작업을 시작합니다.");
-//		return select;
-	}
+
+}
+
+class DB_Select {
+	String select;
+	
 }
 
 public class Test16 {
@@ -144,7 +159,6 @@ public class Test16 {
 
 		Oracle_DB orcl = new Oracle_DB();
 		orcl.login();
-		
 	}
-
+	
 }
