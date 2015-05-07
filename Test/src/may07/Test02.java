@@ -31,7 +31,7 @@ class SwingWindow2 extends JFrame {
 		pane.setSelectedIndex(1);
 		
 		add("Center", pane);
-		setBounds(300, 300, 600, 400); //윈도우 크기와 위치 설정
+		setBounds(300, 300, 600, 300); //윈도우 크기와 위치 설정
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
