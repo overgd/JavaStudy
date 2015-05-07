@@ -77,40 +77,52 @@ public class EmpManageSystem extends JPanel implements ActionListener {
 		
 		JButton btn = (JButton)e.getSource();
 		if(btn == btnAdd){
-			String insert = "insert into emp_info values (?, ? ,?, ?)";
-			String select = "select * from emp_info where id = ?";
-			DB_connection();
-			try{
-				pstmt = conn.prepareStatement(select);
-				pstmt.setString(1, txtId.getText());
-				ResultSet rs = pstmt.executeQuery();
-				if(rs.next()) { //동일한 id로 데이터가 존재하는 경우, 검색한 데이터로 이동한 경우
-					JOptionPane.showMessageDialog(this, "이미 동일한 ID가 존재합니다.");				
-				}
-				else {
-					pstmt = conn.prepareStatement(insert);
+			
+			String[] titles = {"예", "아니오"};
+			int result = JOptionPane.showOptionDialog(this, "정말로 삽입합니까?", "작업확인", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, titles, titles[0]);
+			
+			if(result == JOptionPane.YES_OPTION) { //확인버튼을 누른 경우
+			
+				String insert = "insert into emp_info values (?, ? ,?, ?)";
+				String select = "select * from emp_info where id = ?";
+				DB_connection();
+				try{
+					pstmt = conn.prepareStatement(select);
 					pstmt.setString(1, txtId.getText());
-					pstmt.setString(2, txtPwd.getText());
-					pstmt.setString(3, txtName.getText());
-					pstmt.setInt(4, Integer.parseInt(txtAge.getText()));
-					pstmt.executeUpdate(); //삽입 쿼리 실행
-					JOptionPane.showMessageDialog(this, "삽입됨");
+					ResultSet rs = pstmt.executeQuery();
+					if(rs.next()) { //동일한 id로 데이터가 존재하는 경우, 검색한 데이터로 이동한 경우
+						JOptionPane.showMessageDialog(this, "이미 동일한 ID가 존재합니다.");				
+					}
+					else {
+						pstmt = conn.prepareStatement(insert);
+						pstmt.setString(1, txtId.getText());
+						pstmt.setString(2, txtPwd.getText());
+						pstmt.setString(3, txtName.getText());
+						pstmt.setInt(4, Integer.parseInt(txtAge.getText()));
+						pstmt.executeUpdate(); //삽입 쿼리 실행
+						JOptionPane.showMessageDialog(this, "삽입됨");
+					}
 				}
-			}
-			catch(Exception c){
-				JOptionPane.showMessageDialog(this, "삽입 중 예외 발생!");
-				c.printStackTrace();
-			}
-			finally{
-				DB_close();
-				try {
-					pstmt.close();
+				catch(Exception c){
+					JOptionPane.showMessageDialog(this, "삽입 중 예외 발생!");
+					c.printStackTrace();
 				}
-				catch(Exception c) {
-					
+				finally{
+					DB_close();
+					try {
+						pstmt.close();
+					}
+					catch(Exception c) {
+						
+					}
 				}
-			}
-		}
+			} //예
+			
+			else if(result == JOptionPane.NO_OPTION){
+				JOptionPane.showMessageDialog(this, "취소되었습니다.");
+			} //아니오
+			
+		}// 삽입버튼
 		
 		else if(btn == btnCancel){
 			txtName.setText("");
@@ -121,66 +133,87 @@ public class EmpManageSystem extends JPanel implements ActionListener {
 		
 		else if(btn == btnDelete) {
 			
-			String delete = "delete from emp_info where 1=1 ";
+			String[] titles = {"예", "아니오"};
+			int result = JOptionPane.showOptionDialog(this, "정말로 지웁니까?", "작업확인", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, titles, titles[0]);
 			
-			if(! txtId.getText().equals("")) {
-				delete = delete + "and id = '" + txtId.getText() + "' ";
-			}
-			if(! txtName.getText().equals("")) {
-				delete = delete + "and name = '" + txtName.getText() + "' ";
-			}
-			if(! txtPwd.getText().equals("")) {
-				delete = delete + "and pwd = '" + txtPwd.getText() + "' ";
-			}
-			if(! txtAge.getText().equals("")) {
-				delete = delete + "and age = " + txtAge.getText();
-			}
-			DB_connection();
-			try{
-				stmt.executeUpdate(delete);
-				JOptionPane.showMessageDialog(this, "삭제됨");
-			}
-			catch(Exception err){
+			if(result == JOptionPane.YES_OPTION) {
+			
+				String delete = "delete from emp_info where 1=1 ";
 				
-				JOptionPane.showMessageDialog(this, "삭제 중 예외 발생");
+				if(! txtId.getText().equals("")) {
+					delete = delete + "and id = '" + txtId.getText() + "' ";
+				}
+				if(! txtName.getText().equals("")) {
+					delete = delete + "and name = '" + txtName.getText() + "' ";
+				}
+				if(! txtPwd.getText().equals("")) {
+					delete = delete + "and pwd = '" + txtPwd.getText() + "' ";
+				}
+				if(! txtAge.getText().equals("")) {
+					delete = delete + "and age = " + txtAge.getText();
+				}
+				DB_connection();
+				try{
+					stmt.executeUpdate(delete);
+					JOptionPane.showMessageDialog(this, "삭제됨");
+				}
+				catch(Exception err){
+					
+					JOptionPane.showMessageDialog(this, "삭제 중 예외 발생");
+				}
+				finally{
+					DB_close();
+				}
+			
 			}
-			finally{
-				DB_close();
+			else if(result == JOptionPane.NO_OPTION){
+				JOptionPane.showMessageDialog(this, "취소되었습니다.");
 			}
 		}
 		
 		else if(btn == btnUpdate) {
 			
-			String update = "update emp_info ";
+			String[] titles = {"예", "아니오"};
+			int result = JOptionPane.showOptionDialog(this, "정말로 변경합니까?", "작업확인", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, titles, titles[0]);
 			
-			if(! txtId.getText().equals("")) {
-				update = update + "set id = '" + txtId.getText() + "' ";
-			}			
-			if(! txtName.getText().equals("")) {
-				update = update + ", name = '" + txtName.getText() + "' ";
-			}
-			if(! txtPwd.getText().equals("")) {
-				update = update + ", pwd = '" + txtPwd.getText() + "' ";
-			}
-			if(! txtAge.getText().equals("")) {
-				update = update + ", age = " + txtAge.getText() + " ";
-			}
-			if(! txtId.getText().equals("")) {
-				update = update + "where id = '" + txtId.getText() + "' ";
-			}
-			DB_connection();
-			try{
-				stmt.executeUpdate(update);
-				JOptionPane.showMessageDialog(this, "변경됨");
-			}
-			catch(Exception err){
+			if(result == JOptionPane.YES_OPTION) {
+			
+				String update = "update emp_info ";
 				
-				JOptionPane.showMessageDialog(this, "변경 중 예외 발생");
-				err.printStackTrace();
+				if(! txtId.getText().equals("")) {
+					update = update + "set id = '" + txtId.getText() + "' ";
+				}			
+				if(! txtName.getText().equals("")) {
+					update = update + ", name = '" + txtName.getText() + "' ";
+				}
+				if(! txtPwd.getText().equals("")) {
+					update = update + ", pwd = '" + txtPwd.getText() + "' ";
+				}
+				if(! txtAge.getText().equals("")) {
+					update = update + ", age = " + txtAge.getText() + " ";
+				}
+				if(! txtId.getText().equals("")) {
+					update = update + "where id = '" + txtId.getText() + "' ";
+				}
+				DB_connection();
+				try{
+					stmt.executeUpdate(update);
+					JOptionPane.showMessageDialog(this, "변경됨");
+				}
+				catch(Exception err){
+					
+					JOptionPane.showMessageDialog(this, "변경 중 예외 발생");
+					err.printStackTrace();
+				}
+				finally{
+					DB_close();
+				}
 			}
-			finally{
-				DB_close();
+			
+			else if(result == JOptionPane.NO_OPTION){
+				JOptionPane.showMessageDialog(this, "취소되었습니다.");
 			}
+			
 		}
 			
 		

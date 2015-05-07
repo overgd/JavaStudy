@@ -14,18 +14,20 @@ class SwingWindow2 extends JFrame {
 	
 	SwingWindow2(String title) {
 		
+		super(title);
+		
 		try{
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		
+			
 		pane = new JTabbedPane();
 		p1 = new EmpManageSystem();
-		p2 = new JPanel();
+		p2 = new PcManageSystem();
 		pane.addTab("사원 관리 시스템", p1);
-		pane.addTab("여배우 소개", p2);
+		pane.addTab("PC방 관리 시스템", p2);
 		pane.setSelectedIndex(1);
 		
 		add("Center", pane);
