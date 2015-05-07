@@ -192,9 +192,9 @@ class Windows2 extends Frame implements ActionListener {
 			reader = new LineNumberReader(new FileReader("./text/info.txt"));
 			info_str = new String[b-a];
 			for(int i = a; i < b; i++) {
-				info_str[] = reader.readLine();
+				info_str[i] = reader.readLine();
 				if(info_str == null) break;
-				info[i] = new Label(info_str);
+				info[i] = new Label(info_str[i]);
 				intro[i].add(info[i]);
 				
 			}
