@@ -85,11 +85,14 @@ public class EmpManageSystem extends JPanel implements ActionListener {
 			
 				String insert = "insert into emp_info values (?, ? ,?, ?)";
 				String select = "select * from emp_info where id = ?";
+				
 				DB_connection();
 				try{
+					
 					pstmt = conn.prepareStatement(select);
 					pstmt.setString(1, txtId.getText());
 					ResultSet rs = pstmt.executeQuery();
+					
 					if(rs.next()) { //동일한 id로 데이터가 존재하는 경우, 검색한 데이터로 이동한 경우
 						JOptionPane.showMessageDialog(this, "이미 동일한 ID가 존재합니다.");				
 					}

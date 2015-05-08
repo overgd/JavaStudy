@@ -39,6 +39,8 @@ class SwingWindow extends JFrame {
 	
 	SwingWindow(String title) {
 		
+		super(title);
+		
 		imb = new ImageButton();
 		btn = new JButton("¾È³ç?");
 				
