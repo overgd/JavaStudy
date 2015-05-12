@@ -96,7 +96,7 @@ public class DataProcessing extends JFrame implements ActionListener,
 		add("West", panWest);
 		add("Center", new JScrollPane(table = new JTable()));
 		table.addMouseListener(this); //JTable에 마우스리스너
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //윈도우 종료
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //해당 윈도우만 종료
 		setSize(800, 500);
 		setVisible(true);
 		
