@@ -14,7 +14,6 @@ public class Model extends AbstractTableModel {
 	public void setRows(ResultSet rs) {
 		
 		try{
-			
 			rs.last(); //검색된데이터 맨 아래로
 			rows = rs.getRow(); //마지막 행의 번호
 		}
